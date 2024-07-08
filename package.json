@@ -1,0 +1,25 @@
+{
+  "name": "nightcake",
+  "version": "1.0.0",
+  "description": "A Node.js authentication microservice powered by Express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/evilpaper/nightcake.git"
+  },
+  "keywords": [
+    "node.js",
+    "authentication",
+    "microservice",
+    "express"
+  ],
+  "author": "Pelle Lundgren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evilpaper/nightcake/issues"
+  },
+  "homepage": "https://github.com/evilpaper/nightcake#readme"
+}
