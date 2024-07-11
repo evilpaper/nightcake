@@ -7,7 +7,6 @@ const server = require("./loaders/server");
  * Take care of all necessary steps for the service to run such as,
  * start the web server, load configuration, establish database connection, and so on.
  */
-
 (async () => {
   try {
     // Initialization
