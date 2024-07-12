@@ -1,4 +1,5 @@
-const server = require("./loaders/server");
+const Env = require("./loaders/environment");
+const Server = require("./loaders/server");
 /**
  * Immediately-invoked function as an entry point.
  * The entry point job is to start the execution and have access to command line arguments
@@ -9,9 +10,11 @@ const server = require("./loaders/server");
  */
 (async () => {
   try {
+    const env = Env();
+    const server = Server(env);
     // Initialization
-    server.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    server.listen(env.server.port, () => {
+      console.log(`Server is running on port ${env.server.port}`);
     });
   } catch (error) {
     console.log(error);
