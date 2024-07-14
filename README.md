@@ -1,5 +1,7 @@
 # Nightcake
 
+<img src="night-cake-logo.png" align="right" alt="Night Cake Logo" width="228" height="200" style="padding: 2rem;">
+
 A Node.js Authentication Microservice
 
 ## About this project
