@@ -1,8 +1,11 @@
+/**
+ * We "load" the stuff we need.
+ */
 const Env = require("./loaders/environment");
 const Server = require("./loaders/server");
 /**
  * We use an immediately-invoked function as an entry point.
- * This give us access to command line arguments
+ * This give us access to command line arguments.
  */
 (async () => {
   /**
@@ -12,8 +15,8 @@ const Server = require("./loaders/server");
   try {
     const env = Env();
     /**
-     * Why use dependecy injection pattern to inject the env module.
-     * This means more loosely-couplingg. In case we want to change the env module we only need to
+     * Why use dependecy injection pattern to inject the configuration (env module).
+     * This gives use more loose coupling. In case we want to change the env module we only need to
      * do it in the env module. As long as the interface is the same the rest of our application
      * will be fine.
      */
