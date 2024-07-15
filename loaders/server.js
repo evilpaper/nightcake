@@ -8,6 +8,8 @@ const sigupController = require("../controllers/signup");
 module.exports = (env) => {
   const app = express();
 
+  app.use("/auth", express.urlencoded());
+
   app.get("/health", healthController);
   app.post("/auth/login", loginController);
   app.post("/auth/signup", sigupController);
