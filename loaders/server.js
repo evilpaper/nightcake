@@ -13,7 +13,7 @@ module.exports = (env) => {
 
   app.get("/health", healthController);
 
-  app.post("/auth/login", schemaValidator("login"), loginController);
+  app.post("/auth/login", schemaValidator("login"), loginController(env));
   app.post("/auth/signup", schemaValidator("signup"), sigupController);
 
   app.all("*", fallbackController);
