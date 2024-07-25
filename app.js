@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 /**
  * We "load" the stuff we need.
  */
 const Env = require("./loaders/environment");
+const Database = require("./loaders/database");
 const Server = require("./loaders/server");
 /**
  * We use an immediately-invoked function as an entry point.
@@ -14,6 +16,7 @@ const Server = require("./loaders/server");
    */
   try {
     const env = Env();
+    const db = await Database(env);
     /**
      * Why use dependecy injection pattern to inject the configuration (env module).
      * This gives use more loose coupling. In case we want to change the env module we only need to
