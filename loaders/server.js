@@ -6,15 +6,19 @@ const loginController = require("../controllers/login");
 const sigupController = require("../controllers/signup");
 const schemaValidator = require("../middlewares/schema-validator");
 
-module.exports = (env) => {
+module.exports = (env, repos) => {
   const app = express();
 
   app.use("/auth", express.urlencoded());
 
   app.get("/health", healthController);
 
-  app.post("/auth/login", schemaValidator("login"), loginController(env));
-  app.post("/auth/signup", schemaValidator("signup"), sigupController);
+  app.post(
+    "/auth/login",
+    schemaValidator("login"),
+    loginController(env, repos)
+  );
+  app.post("/auth/signup", schemaValidator("signup"), sigupController(repos));
 
   app.all("*", fallbackController);
 
