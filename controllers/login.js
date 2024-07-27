@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const login = require("../services/login");
 
 module.exports = (env, repos) => async (req, res) => {

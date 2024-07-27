@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const express = require("express");
 const healthController = require("../controllers/health");
 const fallbackController = require("../controllers/fallback");
