@@ -25,6 +25,17 @@ const Repositories = require("./repositories");
     server.listen(env.server.port, () => {
       console.log(`Server is running on port ${env.server.port}`);
     });
+
+    // Close db connection to avoid memory leak in case server i stopped.
+    process.on("SIGINT", async () => {
+      try {
+        await db.close();
+        process.exit(0);
+      } catch (error) {
+        console.error(error);
+        process.exit(1);
+      }
+    });
   } catch (error) {
     console.log(error);
     process.exit(1);
