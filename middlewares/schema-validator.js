@@ -1,4 +1,5 @@
 const schemas = require("../schemas");
+const CustomError = require("../utils/custom-error");
 
 module.exports = (schemaName) => (req, res, next) => {
   const schema = schemas[schemaName] || null;
@@ -6,11 +7,11 @@ module.exports = (schemaName) => (req, res, next) => {
   if (schema) {
     const { error } = schema.validate(req.body);
     if (error) {
-      res.sendStatus(400);
+      throw new CustomError("INVALID_EMAIL_OR_PASSWORD");
     } else {
       next();
     }
   } else {
-    res.sendStatus(500);
+    throw new CustomError("INTERNAL_ERROR");
   }
 };

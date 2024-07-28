@@ -1,5 +1,9 @@
 /* eslint-disable no-unused-vars */
+const errorCodes = require("../constants/error-codes");
+
 module.exports = (err, req, res, next) => {
-  console.error(err);
-  res.sendStatus(500);
+  const code = (err && err.code) || (err.original && err.original.code) || null;
+  const error = errorCodes[code] || errorCodes["INTERNAL_ERROR"];
+
+  return res.status(error.statusCode).json({ message: error.message });
 };

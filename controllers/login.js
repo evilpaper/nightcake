@@ -1,15 +1,10 @@
 const login = require("../services/login");
 
-module.exports = (env, repos) => async (req, res) => {
+module.exports = (env, repos) => async (req, res, next) => {
   try {
     const token = await login(req.body, env.jwt.secret, repos.user.read);
-    if (token) {
-      res.json({ token });
-    } else {
-      res.sendStatus(401);
-    }
+    res.json({ token });
   } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
+    next(error);
   }
 };
