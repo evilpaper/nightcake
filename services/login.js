@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 
 module.exports = async (data, secret, getUser) => {
   const user = await getUser(data.email);
-  console.log(user);
   if (!user) {
     return null;
   }

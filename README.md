@@ -13,9 +13,13 @@ This project is a lightweight authentication microservice. It mainly implements 
 
 ### Layers
 
-- The Router Layer
-- The Service Layer
-- The Data Access Layer
+#### The Router Layer
+
+#### The Service Layer
+
+The Service Layer is located between the Router Layer and the Data Access Layer. It is agnostic to any transport mechanism which means it can receive data from multiple sources and still process it properly. The Service Layer contains the Business Logic of the microservice.
+
+#### The Data Access Layer
 
 ## Features
 
