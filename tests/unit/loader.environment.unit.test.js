@@ -23,3 +23,11 @@ test("it should return an object when loading the test config", () => {
 
   expect(Env()).toEqual(expected);
 });
+
+test("it should throw an error when loading a missing config", () => {
+  process.env.NODE_ENV = "foo";
+
+  expect(() => Env()).toThrow();
+
+  process.env.NODE_ENV = "test";
+});
