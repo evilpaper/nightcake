@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const loginService = require("../../services/login");
 const CustomError = require("../../utils/custom-error");
 
+// jest.mock specifies a manual mock factory for a specific test.
 jest.mock("bcrypt", () => ({
   compare: jest.fn(() => true),
 }));
