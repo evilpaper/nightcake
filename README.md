@@ -23,8 +23,40 @@ The Service Layer is located between the Router Layer and the Data Access Layer.
 
 ## Features
 
-...coming soon
+- Signup
+- Login
+- Validation
+- Custom Error
+- Unit tests with Jest
+- API documentation with Swagger
 
-## Running Locally
+## Getting stated
 
-...coming soon
+### Prerequisites
+
+To run this project you need to have the following installed on your machine:
+
+- Node.js
+- Docker
+
+### Installation
+
+1. Clone the Git repository
+
+```
+$ git clone https://github.com/evilpaper/nightcake
+```
+
+2. Install the dependencies
+
+```
+$ cd project && npm install
+```
+
+### Configuration
+
+To run the project you mustupdate the configuration file located in the `config` directory.
+
+```
+ENV_VARIABLE_A=3000
+```
