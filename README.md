@@ -15,11 +15,15 @@ This project is a lightweight authentication microservice. It mainly implements 
 
 #### The Router Layer
 
+The Router Layser contains the API routes of the application. It is responsible for parsing and validating the payload of incoming requests and forwarding the parsed data to the Service Layer as well as translate the call into a valid HTTP response before sending it back to the client.
+
 #### The Service Layer
 
 The Service Layer is located between the Router Layer and the Data Access Layer. It is agnostic to any transport mechanism which means it can receive data from multiple sources and still process it properly. The Service Layer contains the Business Logic of the microservice.
 
 #### The Data Access Layer
+
+The Data Access Layer is responsible for performing input/output operations outside of the application’s boundaries, such as communicating with the database.
 
 ## Features
 
@@ -34,20 +38,20 @@ The Service Layer is located between the Router Layer and the Data Access Layer.
 
 ### Prerequisites
 
-To run this project you need to have the following installed on your machine:
+To run the project you need to have the following installed on your machine:
 
 - Node.js
 - Docker
 
 ### Installation
 
-1. Clone the Git repository
+First: Clone the Git repository
 
 ```
 $ git clone https://github.com/evilpaper/nightcake
 ```
 
-2. Install the dependencies
+Second: Install the dependencies
 
 ```
 $ cd project && npm install
@@ -55,8 +59,48 @@ $ cd project && npm install
 
 ### Configuration
 
-To run the project you mustupdate the configuration file located in the `config` directory.
+To run the project you must first add environmental variables in the `config` directory.
+
+EX. DEVELOPMENT:
 
 ```
-ENV_VARIABLE_A=3000
+SERVER_PORT=3000
+JWT_SECRET="the-jwt-secret"
+DATABASE_NAME=authentication
+DATABASE_USER=admin
+DATABASE_PASSWORD="the-admin-password"
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_DIALECT=mysql
+DATABASE_LOGGING=TRUE
+DATABASE_SYNC=TRUE
 ```
+
+### Usage
+
+To run the server in _development_ mode:
+
+```
+$ npm run dev
+```
+
+## Tests
+
+To run the unit tests:
+
+```
+$ npm run test-unit
+```
+
+## API Reference
+
+You can access the API documentation at: http://127.0.0.1:3000/docs
+
+## Authors
+
+- Pelle Lundgren
+- Razvan Ludosanu
+
+## License
+
+MIT
