@@ -15,7 +15,7 @@ This project is a lightweight authentication microservice. It mainly implements 
 
 #### The Router Layer
 
-The Router Layser contains the API routes of the application. It is responsible for parsing and validating the payload of incoming requests and forwarding the parsed data to the Service Layer as well as translate the call into a valid HTTP response before sending it back to the client.
+The Router Layer contains the API routes of the application. It is responsible for parsing and validating the payload of incoming requests and forwarding the parsed data to the Service Layer as well as translate the call into a valid HTTP response before sending it back to the client.
 
 #### The Service Layer
 
@@ -68,7 +68,7 @@ SERVER_PORT=3000
 JWT_SECRET="the-jwt-secret"
 DATABASE_NAME=authentication
 DATABASE_USER=admin
-DATABASE_PASSWORD="the-admin-password"
+DATABASE_PASSWORD=admin
 DATABASE_HOST=localhost
 DATABASE_PORT=3306
 DATABASE_DIALECT=mysql
@@ -78,7 +78,26 @@ DATABASE_SYNC=TRUE
 
 ### Usage
 
-To run the server in _development_ mode:
+To run the server in _development_ mode.
+
+Create and run a Docker container for the MySQL database:
+
+```
+$ docker run -d -p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=root \
+-e MYSQL_DATABASE=authentication \
+-e MYSQL_USER=admin \
+-e MYSQL_PASSWORD=admin \
+mysql:8
+```
+
+You can validate the the container is up and running by using:
+
+```
+$ docker ps
+```
+
+When the container is up. Start the service with:
 
 ```
 $ npm run dev
@@ -90,6 +109,19 @@ To run the unit tests:
 
 ```
 $ npm run test-unit
+```
+
+### Testing the endpoints with curl in development
+
+Once the service is runniing you can test the endpoints with curl.
+
+#### Should return an HTTP 400 (Bad Request) when given and invalid email address:
+
+```
+$ curl -X POST \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'email=user&password=helloworld' \
+127.0.0.1:3000/auth/login
 ```
 
 ## API Reference
