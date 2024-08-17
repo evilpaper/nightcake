@@ -115,12 +115,21 @@ $ npm run test-unit
 
 Once the service is runniing you can test the endpoints with curl.
 
-#### Should return an HTTP 400 (Bad Request) when given and invalid email address:
+#### Should return HTTP 400 (Bad Request) when given and invalid email address:
 
 ```
-$ curl -X POST \
+$ curl -i -X POST \
 -H 'Content-Type: application/x-www-form-urlencoded' \
--d 'email=user&password=helloworld' \
+-d 'email=user&password=papasmurf' \
+127.0.0.1:3000/auth/login
+```
+
+#### SHould return HTTP 400 (Bad Request) when given too short password
+
+```
+$ curl -i -X POST \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'email=user&password=papa' \
 127.0.0.1:3000/auth/login
 ```
 
