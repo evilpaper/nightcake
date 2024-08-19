@@ -133,13 +133,22 @@ $ curl -i -X POST \
 127.0.0.1:3000/auth/login
 ```
 
-#### Should return HHTP 404 (Not Found) when given a user that does not exist.
+#### Should return HTTP 404 (Not Found) when given a user that does not exist.
 
 ```
 $ curl -i -X POST \
 -H 'Content-Type: application/x-www-form-urlencoded' \
 -d 'email=user@mail.com&password=clumsysmurf' \
 127.0.0.1:3000/auth/login
+```
+
+#### Should return HTTP 201 (Created) when given valid email and password on signup.
+
+```
+$ curl -i -X POST \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'email=user@mail.com&password=clumsysmurf' \
+127.0.0.1:3000/auth/signup
 ```
 
 ## API Reference
