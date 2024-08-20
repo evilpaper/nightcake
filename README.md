@@ -151,6 +151,15 @@ $ curl -i -X POST \
 127.0.0.1:3000/auth/signup
 ```
 
+#### Should return HTTP 409 (Conflict) when given same already taken email on signup.
+
+```
+$ curl -i -X POST \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'email=user@mail.com&password=clumsysmurf' \
+127.0.0.1:3000/auth/signup
+```
+
 ## API Reference
 
 You can access the API documentation at: http://127.0.0.1:3000/docs
