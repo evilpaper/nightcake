@@ -160,6 +160,15 @@ $ curl -i -X POST \
 127.0.0.1:3000/auth/signup
 ```
 
+##### Should resturn HTTP 200 (OK) when given valid email and password on login.
+
+```
+$ curl -i -X POST \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'email=user@mail.com&password=clumsysmurf' \
+127.0.0.1:3000/auth/login
+```
+
 ## API Reference
 
 You can access the API documentation at: http://127.0.0.1:3000/docs
