@@ -13,18 +13,15 @@ module.exports = (env, repos) => {
   const app = express();
 
   app.use("/auth", express.urlencoded());
-
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(document));
 
   app.get("/health", healthController);
-
   app.post(
     "/auth/login",
     schemaValidator("login"),
     loginController(env, repos)
   );
   app.post("/auth/signup", schemaValidator("signup"), sigupController(repos));
-
   app.all("*", fallbackController);
 
   app.use(errorHandlerMiddleware);

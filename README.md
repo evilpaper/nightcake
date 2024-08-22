@@ -169,6 +169,13 @@ $ curl -i -X POST \
 127.0.0.1:3000/auth/login
 ```
 
+## Roadmap
+
+- [ ] DO something nice with the token so user can send it back. Like add it to cookie or something.
+- [ ] Should we store the JWT on the backend?
+- [ ] Add protected route `/logout` that rease the JWT token
+- [ ] Add protected route `/me` that return the users information
+
 ## API Reference
 
 You can access the API documentation at: http://127.0.0.1:3000/docs
