@@ -171,10 +171,14 @@ $ curl -i -X POST \
 
 ## Roadmap
 
-- [ ] DO something nice with the token so user can send it back. Like add it to cookie or something.
+- [ ] Do something nice with the token so user can send it back. Like add it to cookie or something.
 - [ ] Should we store the JWT on the backend?
 - [ ] Add protected route `/logout` that rease the JWT token
 - [ ] Add protected route `/me` that return the users information
+
+## Issues
+
+- [x] JWT Token has Invalid Signature. Resolved. The secret should start out as a plain text sting. If in Base64-encoded format we need to decode it first.
 
 ## API Reference
 
