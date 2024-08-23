@@ -171,10 +171,11 @@ $ curl -i -X POST \
 
 ## Roadmap
 
-- [ ] Do something nice with the token so user can send it back. Like add it to cookie or something.
-- [ ] Should we store the JWT on the backend?
+- [x] Set accessToken on login
+- [ ] Store accessToken in db
 - [ ] Add protected route `/logout` that rease the JWT token
 - [ ] Add protected route `/me` that return the users information
+- [ ] refreshToken
 
 ## Issues
 

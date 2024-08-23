@@ -8,10 +8,12 @@ const errorHandlerMiddleware = require("../middlewares/error-handler");
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const document = YAML.load("./openapi.yaml");
+const cookieParser = require("cookie-parser");
 
 module.exports = (env, repos) => {
   const app = express();
 
+  app.use(cookieParser(env.cookie.secret));
   app.use("/auth", express.urlencoded());
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(document));
 

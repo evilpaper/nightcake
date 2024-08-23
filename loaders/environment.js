@@ -17,6 +17,9 @@ module.exports = () => {
     jwt: {
       secret: env.parsed.JWT_SECRET,
     },
+    cookie: {
+      secret: env.parsed.COOKIE_SECRET,
+    },
     database: {
       name: env.parsed.DATABASE_NAME,
       user: env.parsed.DATABASE_USER,
