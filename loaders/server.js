@@ -13,6 +13,11 @@ const cookieParser = require("cookie-parser");
 module.exports = (env, repos) => {
   const app = express();
 
+  // Custom middleware
+  app.use((req, _res, next) => {
+    console.log(`Processing request for ${req.url}...`);
+    next();
+  });
   app.use(cookieParser(env.cookie.secret));
   app.use("/auth", express.urlencoded());
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(document));
