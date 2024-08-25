@@ -9,6 +9,7 @@ const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const document = YAML.load("./openapi.yaml");
 const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 
 module.exports = (env, repos) => {
   const app = express();
@@ -23,12 +24,31 @@ module.exports = (env, repos) => {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(document));
 
   app.get("/health", healthController);
+  app.get("/me", (req, res, next) => {
+    // Cookies that have been signed
+    console.log("Cookies: ", req.cookies);
+
+    const { accessToken } = req.cookies;
+
+    if (!accessToken) return res.status(403).send("Token is missing");
+
+    jwt.verify(accessToken, env.jwt.secret, (err, decoded) => {
+      if (err) return res.status(403).send("Invalid token");
+
+      req.user = decoded;
+      res.status(200).send("User authenticated. Me is ...");
+      next();
+    });
+
+    next();
+  });
   app.post(
     "/auth/login",
     schemaValidator("login"),
     loginController(env, repos)
   );
   app.post("/auth/signup", schemaValidator("signup"), sigupController(repos));
+
   app.all("*", fallbackController);
 
   app.use(errorHandlerMiddleware);

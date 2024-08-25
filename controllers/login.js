@@ -6,7 +6,7 @@ module.exports = (env, repos) => async (req, res, next) => {
     res.cookie("accessToken", token, {
       signed: true,
     });
-    res.json({ token });
+    res.json({ accessToken: token });
   } catch (error) {
     next(error);
   }

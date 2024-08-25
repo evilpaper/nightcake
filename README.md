@@ -172,7 +172,6 @@ $ curl -i -X POST \
 ## Roadmap
 
 - [x] Set accessToken on login
-- [ ] Store accessToken in db
 - [ ] Add protected route `/logout` that rease the JWT token
 - [ ] Add protected route `/me` that return the users information
 - [ ] refreshToken
