@@ -4,6 +4,7 @@ const fallbackController = require("../controllers/fallback");
 const loginController = require("../controllers/login");
 const sigupController = require("../controllers/signup");
 const meController = require("../controllers/me");
+const verifyToken = require("../middlewares/verify-token");
 const schemaValidator = require("../middlewares/schema-validator");
 const errorHandlerMiddleware = require("../middlewares/error-handler");
 const swaggerUi = require("swagger-ui-express");
@@ -24,7 +25,7 @@ module.exports = (env, repos) => {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(document));
 
   app.get("/health", healthController);
-  app.get("/me", meController(env));
+  app.get("/me", verifyToken(env), meController);
   app.post(
     "/auth/login",
     schemaValidator("login"),
