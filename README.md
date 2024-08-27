@@ -169,7 +169,7 @@ $ curl -i -X POST \
 127.0.0.1:3000/auth/login
 ```
 
-##### Should return HTTP 403 (Forbidden) when trying to access /me without being logged in.
+##### Should return HTTP 403 (Forbidden) when trying to access /me without being logged in (having an accessToken).
 
 ```
 $ curl -i 127.0.0.1:3000/me
@@ -178,7 +178,7 @@ $ curl -i 127.0.0.1:3000/me
 ## Roadmap
 
 - [x] Set accessToken on login
-- [ ] Add protected route `/logout` that rease the JWT token
+- [ ] Add protected route `/logout` that delete the accessToken
 - [ ] Add protected route `/me` that return the users information
 - [ ] refreshToken
 
